@@ -102,8 +102,9 @@ var host = new HostBuilder()
         }
         else
         {
+            // Acme uses NTLM security.  
             services.AddHttpClient<IAcmeHttpClient, AcmeHttpClient>()
-                    // Acme uses NTLM security 
+                    // Ensure credentials are added to the HttpClientHandler so each request will use the credentials
                     .ConfigurePrimaryHttpMessageHandler((s) =>
                     {
                         var options = sp.GetService<IOptions<AcmeSubscriptionInfo>>().Value;
