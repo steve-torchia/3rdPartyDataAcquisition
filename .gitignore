@@ -1,0 +1,14 @@
+/azurefunctions/.vscode
+/build/packages
+/build/buildoutput
+/build/buildlogs
+
+.ds_store
+/.vs/**/*
+TestResults
+*.suo
+launchSettings.json
+/build/.vscode
+/sqldb/DataWarehouse/PrePreDeploy/Data_PriceReport.sql
+/.vscode/launch.json
+/code/thirdpartydata/thirdpartycontractslib

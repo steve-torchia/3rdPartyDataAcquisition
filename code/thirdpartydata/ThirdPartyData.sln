@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WeatherBasedGeneration", "WeatherBasedGeneration", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.AcquireGeneration", "Acme\Acme.AcquireGeneration\Acme.AcquireGeneration.csproj", "{28006132-97C1-8C79-ACA4-A645F8113D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.AcquireGeneration.Test", "Acme\Acme.AcquireGeneration.Test\Acme.AcquireGeneration.Test.csproj", "{3C19760A-083D-031A-8058-1E9941213C8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Contracts", "Acme\Acme.Contracts\Acme.Contracts.csproj", "{D25F6193-2B24-66FB-8C80-75CD7872F537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.ProcessGeneration", "Acme\Acme.ProcessGeneration\Acme.ProcessGeneration.csproj", "{95AB8F89-663D-10B1-7166-4EEFDADF3022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.ProcessGeneration.Test", "Acme\Acme.ProcessGeneration.Test\Acme.ProcessGeneration.Test.csproj", "{8FD65CEF-D469-32E0-997F-306A45BC7188}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28006132-97C1-8C79-ACA4-A645F8113D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28006132-97C1-8C79-ACA4-A645F8113D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28006132-97C1-8C79-ACA4-A645F8113D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28006132-97C1-8C79-ACA4-A645F8113D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C19760A-083D-031A-8058-1E9941213C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C19760A-083D-031A-8058-1E9941213C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C19760A-083D-031A-8058-1E9941213C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C19760A-083D-031A-8058-1E9941213C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D25F6193-2B24-66FB-8C80-75CD7872F537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D25F6193-2B24-66FB-8C80-75CD7872F537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D25F6193-2B24-66FB-8C80-75CD7872F537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D25F6193-2B24-66FB-8C80-75CD7872F537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95AB8F89-663D-10B1-7166-4EEFDADF3022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95AB8F89-663D-10B1-7166-4EEFDADF3022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95AB8F89-663D-10B1-7166-4EEFDADF3022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95AB8F89-663D-10B1-7166-4EEFDADF3022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD65CEF-D469-32E0-997F-306A45BC7188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD65CEF-D469-32E0-997F-306A45BC7188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD65CEF-D469-32E0-997F-306A45BC7188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD65CEF-D469-32E0-997F-306A45BC7188}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28006132-97C1-8C79-ACA4-A645F8113D49} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{3C19760A-083D-031A-8058-1E9941213C8B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D25F6193-2B24-66FB-8C80-75CD7872F537} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{95AB8F89-663D-10B1-7166-4EEFDADF3022} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{8FD65CEF-D469-32E0-997F-306A45BC7188} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0252C8B8-E3B5-4938-940D-030A3B3C8E93}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,168 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.8.1" />
+		<PackageReference Include="CsvHelper" Version="27.2.1" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+		<PackageReference Include="Moq" Version="4.16.1" />
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.2.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.18.1" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.23.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.DurableTask" Version="1.2.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="1.3.2" />
+		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="DP.Base">
+			<HintPath>..\..\..\common\lib\DP.Base.dll</HintPath>
+		</Reference>
+		<Reference Include="DP.Base.Contracts">
+			<HintPath>..\..\..\common\lib\DP.Base.Contracts.dll</HintPath>
+		</Reference>
+		<Reference Include="EEDurableFunctionsCommon">
+			<HintPath>..\..\..\common\lib\DurableFunctionsCommon.dll</HintPath>
+		</Reference>
+		<Reference Include="Ingress.Lib.Base">
+			<HintPath>..\..\..\common\lib\Ingress.Lib.Base.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Acme.Contracts\Acme.Contracts.csproj" />
+		<ProjectReference Include="..\Acme.ProcessGeneration\Acme.ProcessGeneration.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="TestData\ToBeProcessed\PR-00000001_Vandelay Industries_Wind_2021_40.8055772_-73.9655785_120_VESTAS_V126-3.45_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\ToBeProcessed\PR-00001855_Cactus Flats_Wind_2021_31.15_-99.98_148_VESTAS_V126-3.45_95_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\ToBeProcessed\PR-00001855_Cactus Flats_Wind_2021_31.15_-99.98_148_VESTAS_V126-3.45_95_1_2.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\ToBeProcessed\PR-00002096_Stephens Ranch Wind Energy Phase 1_Wind_2021_32.85_-101.68_211_GE_1.7-100_80_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\ToBeProcessed\PR-00002717_Prairie Hills Wind_Wind_2021_41.12_-99.32_200_VESTAS_V110-2.0_80_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\ToBeProcessed\PR-00002750_Seven Cowboy Wind Project_Wind_2021_35.24_-99.4_300_VESTAS_V110-2.0_80_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\ToBeProcessed\PR-00003641_Blackford Wind_Wind_2021_40.5_-85.31_200_VESTAS_V136-3.45_117_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\ToBeProcessed\PR-00003779_Jarocin Park_Wind_2021_51.89_17.42_12_VESTAS_V110-2.0_95_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\aSolar_PR-00003658_BiltenSolar_2021.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\aSolar_PR-00003658_BiltenSolar_2021_30.21_-89.51_135_1.35_Standard_Single Axis_______true___1.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\aSolar_PR-00003837_Hayward_2021_43.65_-93.21_150_1_Premium_Single Axis_60_0_~_false_~_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\BogusTimeZone\MasterTemplate_Gens_wind_EXW_API_2020.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\BogusTimeZone\Templates_Gens_wind_EXW_API_2020.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\BogusTimeZone\Wind_PR-00003779_Jarocin Park_2020_51.89_17.42_12_VESTAS_V110-2.0_95_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\EmptyZipFile\placeholder.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\EmptyZipFile\Wind_PR-00001855_Cactus Flats_2018_31.15_-99.98_148_VESTAS_V1263450_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\MasterTemplate_Gens_PV_EXW_API_2017.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\MasterTemplate_Gens_PV_EXW_API_2021.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Templates_Gens_PV_EXW_API_id12641_2017.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Templates_Gens_PV_EXW_API_id13248_2021.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\TooManyGen\MasterTemplate_Gens_wind_EXW_API_2021.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\TooManyGen\Templates_Gens_wind_EXW_API_2020.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\TooManyGen\Templates_Gens_wind_EXW_API_2021.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\TooManyGen\Wind_PR-00001855_Cactus Flats_2021_31.15_-99.98_148_VESTAS_V1263450_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\TooManyTmp\MasterTemplate_Gens_wind_EXW_API_2021.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\TooManyTmp\MasterTemplate_Gens_wind_EXW_API_2022.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\TooManyTmp\Templates_Gens_wind_EXW_API_2020.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\TooManyTmp\Wind_PR-00001855_Cactus Flats_2021_31.15_-99.98_148_VESTAS_V1263450_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00001855_Cactus Flats_2017_31.15_-99.98_148_VESTAS_V1263450_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00001855_Cactus Flats_2018_31.15_-99.98_148_VESTAS_V1263450_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00001855_Cactus Flats_2019_31.15_-99.98_148_VESTAS_V1263450_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00001855_Cactus Flats_2020_31.15_-99.98_148_VESTAS_V1263450_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00001855_Cactus Flats_2021_31.15_-99.98_148_VESTAS_V1263450_87_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00003779_Jarocin Park_2017_51.89_17.42_12_VESTAS_V110-2.0_95_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00003779_Jarocin Park_2018_51.89_17.42_12_VESTAS_V110-2.0_95_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00003779_Jarocin Park_2019_51.89_17.42_12_VESTAS_V110-2.0_95_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00003779_Jarocin Park_2020_51.89_17.42_12_VESTAS_V110-2.0_95_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\UnitTestData\ToBeProcessed\Wind_PR-00003779_Jarocin Park_2021_51.89_17.42_12_VESTAS_V110-2.0_95_1_1.zip">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+
+
+
+</Project>

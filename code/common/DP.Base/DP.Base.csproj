@@ -1,0 +1,105 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<!-- Custom build variables (macros are busted: https://github.com/dotnet/project-system/issues/1569 -->
+	<PropertyGroup>
+		<Platforms>x64</Platforms>
+		<Configurations>Debug;Release;ContractsDebug;ContractsRelease;ImplDebug;ImplRelease;AppsDebug;AppsRelease</Configurations>
+		<NuGetAudit>false</NuGetAudit>
+	</PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Authors />
+		<Company>Acme Widgets</Company>
+		<Description>Common Library</Description>
+		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+		<PackageOutputPath>..\packages</PackageOutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputPath>bin\x64\Debug\</OutputPath>
+		<Optimize>False</Optimize>
+		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+		<TreatSpecificWarningsAsErrors />
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DebugType>pdbonly</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputPath>bin\x64\Release\</OutputPath>
+		<Optimize>True</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ContractsDebug|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputPath>bin\x64\Debug\</OutputPath>
+		<Optimize>False</Optimize>
+		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+		<TreatSpecificWarningsAsErrors />
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ContractsRelease|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputPath>bin\x64\Release\</OutputPath>
+		<Optimize>True</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ImplDebug|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputPath>bin\x64\Debug\</OutputPath>
+		<Optimize>False</Optimize>
+		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+		<TreatSpecificWarningsAsErrors />
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ImplRelease|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputPath>bin\x64\Release\</OutputPath>
+		<Optimize>True</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='AppsDebug|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputPath>bin\x64\Debug\</OutputPath>
+		<Optimize>False</Optimize>
+		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+		<TreatSpecificWarningsAsErrors />
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='AppsRelease|x64'">
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputPath>bin\x64\Release\</OutputPath>
+		<Optimize>True</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="version.txt" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.8.1" />
+		<PackageReference Include="CsvHelper" Version="27.2.1" />
+		<PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.9" />
+		<PackageReference Include="FluentEmail.Core" Version="3.0.2" />
+		<PackageReference Include="FluentEmail.Smtp" Version="3.0.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
+		<PackageReference Include="ServiceStack.Text.Core" Version="5.10.4" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Properties\" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\DP.Base.Contracts\DP.Base.Contracts.csproj" />
+	</ItemGroup>
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="echo Configuration: $(Configuration)&#xD;&#xA;echo DevEnvDir: $(DevEnvDir)&#xD;&#xA;echo OutDir: $(OutDir)&#xD;&#xA;echo ProjectDir: $(ProjectDir)&#xD;&#xA;echo VisualStudioVersion: $(VisualStudioVersion)&#xD;&#xA;echo AssemblySearchPaths: $(AssemblySearchPaths)&#xD;&#xA;echo AssemblyName: $(AssemblyName)&#xD;&#xA;echo BaseIntermediateOutputPath: $(BaseIntermediateOutputPath)&#xD;&#xA;echo CscToolPath: $(CscToolPath)" />
+	</Target>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="robocopy $(OutDir) ..\lib $(AssemblyName).dll &#xD;&#xA;exit 0" />
+	</Target>
+</Project>
