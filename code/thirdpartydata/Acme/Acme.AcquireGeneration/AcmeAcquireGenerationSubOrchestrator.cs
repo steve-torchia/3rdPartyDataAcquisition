@@ -72,7 +72,7 @@ namespace Acme.AcquireGeneration
                         Success = false,
                         DisplayMessage = diagnosticMsg,
                         ReturnValue = acmeCtx,
-                        Exception = launchWindJobResult.Exception,
+                        Exception = waitForJobResult.Exception,
                     };
                 }
 
@@ -99,7 +99,7 @@ namespace Acme.AcquireGeneration
                         Success = false,
                         DisplayMessage = diagnosticMsg,
                         ReturnValue = acmeCtx,
-                        Exception = launchWindJobResult.Exception,
+                        Exception = getGenerationDataResult.Exception,
                     };
                 }
 
