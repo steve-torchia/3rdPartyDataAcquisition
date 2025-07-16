@@ -127,6 +127,7 @@ namespace Acme.AcquireGeneration
         {
             try
             {
+                // This call to Acme has proved to be flaky during our testing, so we will use the retry mechanism to add some resilience.
                 var httpResponse = await this.GetWithRetryAsync(
                     ctx.JobInfo.ResultsUrl,
                     (h) => h.IsSuccessStatusCode && h.Content.Headers.ContentLength > AcmeAcquireGenerationHelpers.AcmeApiMinBytesDownloaded);

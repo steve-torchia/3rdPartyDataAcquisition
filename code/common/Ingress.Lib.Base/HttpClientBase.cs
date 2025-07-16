@@ -26,6 +26,8 @@ namespace Ingress.Lib.Base
                                                                         int retryIntervalInSeconds = 2,
                                                                         int retryCount = 3)
         {
+            // Testing against Acme API has shown that it can be flaky, so we will retry the request a few times before failing.
+            // Trying every 2 seconds for a maximum of 3 times has proven suitable based on testing.
             var retryInterval = TimeSpan.FromSeconds(retryIntervalInSeconds);
 
             HttpResponseMessage response = null;

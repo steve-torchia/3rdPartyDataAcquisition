@@ -55,6 +55,9 @@ namespace Acme.AcquireGeneration
 
                 // Wait for the URI of the completed csv file for the requested jobId.
                 // Try 90 times with 10 second waits in between tries (15 minutes)
+                // Why 90x of 10s: This should probably be configurable (TODO) but after working with Acme's API Developers, it was agreed that 
+                // 15 minutes is a proper amount of time to wait for the job to complete. If it goes beyond that, it's likely that something 
+                // went wrong at Acme and at that point we should fail, return the error and let operations know that they need to check with Acme.
                 var waitResult = await this.AcmeHttpClient.WaitForGenerationJobAsync(historyId, retryCount: 90, retryIntervalSeconds: 10);
 
                 if (!waitResult.Success)
