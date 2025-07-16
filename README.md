@@ -25,34 +25,47 @@ This solution implements a **microservices architecture** with clean separation 
    B. Wait (Poll) for job completion
    C. Download and save data to Azure Blob Storage
 
+## 🔍 Code Review Guide: Execution Flow
+
+To assist in understanding this solution, follow the execution flow in this order:
+
+1. **`AcmeAcquireGenerationFcnTrigger.cs`** → HTTP trigger and entry point
+2. **`AcmeAcquireGenerationOrchestrator.cs`** → Top-level orchestrator, manages concurrency and status reporting  
+3. **`AcmeAcquireGenerationSubOrchestrator.cs`** → Coordinates the sequence of API interaction steps
+4. **`AcmeAcquireGenerationActivityFcns.cs`** → Contains individual activity functions for interacting with the remote API
+
 ## 🚀 Technology Stack
 
 - **C# / .NET 8** - Modern, cross-platform framework
 - **Azure Functions v4** - Serverless compute platform
-- **Azure Durable Functions** - Stateful functions for complex workflows (code rather than delcarative)
+- **Azure Durable Functions** - Stateful functions for complex workflows (code rather than declarative)
 - **Azure Blob Storage** - Scalable object storage
 - **Azure Key Vault** - Secure secrets and configuration management
 - **Azure Application Insights** - Monitoring and telemetry
 - **xUnit & Moq** - Comprehensive testing framework
 - **Newtonsoft.Json** - JSON serialization
 - **CsvHelper** - CSV data processing
+
 ---
 
 ## 🛠️ Key Features
 
 ### Reliability & Resilience
+
 - **Retry Logic**: Configurable retry policies for external API calls
 - **Error Handling**: Comprehensive error handling with `CallResult<T>` pattern
 - **Timeout Management**: Configurable timeouts for long-running operations
 - **Status Monitoring**: Real-time workflow status via management APIs
 
 ### Scalability & Performance
+
 - **Concurrent Processing**: Fan Out/Fan In pattern with configurable concurrency
 - **Async/Await**: Non-blocking operations throughout
 - **Durable Functions**: Checkpointing for long-running workflows
 - **Memory Optimization**: Streaming data processing
 
 ### Data Quality & Validation
+
 - **Structured Logging**: Comprehensive telemetry and debugging info for operational insights
 - **Time Zone Handling**: UTC conversions to/from localtime
 - **CSV Validation**: Data integrity checks before storage
@@ -60,16 +73,19 @@ This solution implements a **microservices architecture** with clean separation 
 ## 🔧 Key Design Patterns
 
 ### Orchestration Pattern
+
 - **Durable Functions** for stateful workflows
 - **Fan-out/Fan-in** for parallel processing
 - **Human Interaction** possible to call and monitor these functions manually (e.g. Postman)
 
 ### Repository Pattern
+
 - **Abstracted data access** via interfaces
 - **Dependency injection** for testability
 - **Blob storage wrapper** for consistent API
 
 ### Circuit Breaker Pattern
+
 - **Retry policies** with exponential backoff
 - **Timeout handling** for external dependencies
 - **Graceful degradation** on failures
@@ -111,4 +127,3 @@ ThirdPartyData.sln
 │       ├── AcmeHelpers.cs
 │       └── TurbineType.cs
 ```
-
