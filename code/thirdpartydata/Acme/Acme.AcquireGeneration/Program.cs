@@ -94,25 +94,26 @@ var host = new HostBuilder()
             });
 
         // HTTP Client:
-        var sp = services.BuildServiceProvider();
-        var cfg = sp.GetService<IOptions<AcquireAcmeGenerationConfigSettings>>().Value;
-        if (cfg.UseHttpInternetMock)
+        var tempConfig = config.Build();
+        var useHttpMock = tempConfig.GetSection(nameof(AcquireAcmeGenerationConfigSettings)).GetValue<bool>("UseHttpInternetMock");
+        
+        if (useHttpMock)
         {
             services.AddHttpClient<IAcmeHttpClient, AcmeHttpClientInternetMock>();
         }
         else
         {
             // Acme uses NTLM security.  
+            // NOTE:  NTLM is considered legacy and less secure than say, OAuth2 or certificates.
             services.AddHttpClient<IAcmeHttpClient, AcmeHttpClient>()
-                    // Ensure credentials are added to the HttpClientHandler so each request will use the credentials
-                    .ConfigurePrimaryHttpMessageHandler((s) =>
+                .ConfigurePrimaryHttpMessageHandler((sp) =>
+                {
+                    var options = sp.GetRequiredService<IOptions<AcmeSubscriptionInfo>>().Value;
+                    return new HttpClientHandler
                     {
-                        var options = sp.GetService<IOptions<AcmeSubscriptionInfo>>().Value;
-                        return new HttpClientHandler
-                        {
-                            Credentials = new NetworkCredential(options.Username, options.Password, options.Domain)
-                        };
-                    });
+                        Credentials = new NetworkCredential(options.Username, options.Password, options.Domain)
+                    };
+                });
         }
 
         // The workflow (aka Durable Orchestration class)
