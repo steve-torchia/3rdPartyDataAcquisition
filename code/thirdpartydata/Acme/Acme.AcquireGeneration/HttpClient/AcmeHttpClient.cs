@@ -10,7 +10,7 @@ using Microsoft.Extensions.Options;
 
 namespace Acme.AcquireGeneration
 {
-    public class AcmeHttpClient : HttpClientBase<IAcmeHttpClient>, IAcmeHttpClient
+    public class AcmeHttpClient : HttpClientBase<ISktInsightsHttpClient>, ISktInsightsHttpClient
     {
         public string SolarRequestUrl { get; protected set; }
         public string WindRequestUrl { get; protected set; }

@@ -83,7 +83,7 @@ var host = new HostBuilder()
 
 
         // The workflow (aka Durable Orchestration class)
-        services.AddScoped<IAcmeProcessGenerationOrchestrator, AcmeProcessGenerationOrchestrator>();
+        services.AddScoped<ISktInsightsProcessGenerationOrchestrator, AcmeProcessGenerationOrchestrator>();
 
         // The activity functions 
         services.AddScoped<AcmeProcessGenerationActivityFcns>();

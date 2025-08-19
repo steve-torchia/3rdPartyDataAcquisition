@@ -18,13 +18,13 @@ namespace Acme.AcquireGeneration
         public const string AcmeHistoryId = "acmeHistoryId";
         public const string GetSettingsParam = "getSettings";
 
-        internal IAcmeAcquireGenerationOrchestrator Orchestrator { get; }
+        internal ISktInsightsAcquireGenerationOrchestrator Orchestrator { get; }
         internal AcquireAcmeGenerationConfigSettings ConfigSettings { get; }
         internal ILogger<AcmeAcquireGenerationFcnTrigger> Log { get; private set; }
         internal IBlobContainerWrapper BlobContainerWrapper { get; }
 
         public AcmeAcquireGenerationFcnTrigger(
-            IAcmeAcquireGenerationOrchestrator orchestrator,
+            ISktInsightsAcquireGenerationOrchestrator orchestrator,
             IOptions<AcquireAcmeGenerationConfigSettings> settings,
             IOptions<BlobConfigInfo> blobConfigInfo,
             ILogger<AcmeAcquireGenerationFcnTrigger> log)

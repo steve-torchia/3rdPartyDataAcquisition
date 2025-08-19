@@ -18,7 +18,7 @@ namespace Acme.AcquireGeneration
     /// Encapsulates the Durable Function Orchestration method, which defines the overall workflow for  
     /// retrieving the Acme Generation
     /// </summary>
-    public class AcmeAcquireGenerationOrchestrator : OrchestrationBase, IAcmeAcquireGenerationOrchestrator
+    public class AcmeAcquireGenerationOrchestrator : OrchestrationBase, ISktInsightsAcquireGenerationOrchestrator
     {
         internal ILogger<AcmeAcquireGenerationOrchestrator> Log { get; private set; }
         internal GlobalConfigSettings GlobalConfigSettings { get; private set; } 
@@ -64,7 +64,7 @@ namespace Acme.AcquireGeneration
         {
             // Launch the Durable Orchestrator
             await orchestrationClient.ScheduleNewOrchestrationInstanceAsync(
-                nameof(AcmeAcquireGenerationOrchestratorAsync),
+                nameof(SktInsightsAcquireGenerationOrchestratorAsync),
                 requestInputJson,
                 new StartOrchestrationOptions(orchestrationId));
 
@@ -90,8 +90,8 @@ namespace Acme.AcquireGeneration
         }
 
 
-        [Function(nameof(AcmeAcquireGenerationOrchestratorAsync))]
-        public async Task<OrchestrationResults> AcmeAcquireGenerationOrchestratorAsync(
+        [Function(nameof(SktInsightsAcquireGenerationOrchestratorAsync))]
+        public async Task<OrchestrationResults> SktInsightsAcquireGenerationOrchestratorAsync(
             [OrchestrationTrigger] TaskOrchestrationContext orchestrationCtx)
         {
             var orchestrationResults = new OrchestrationResults();
@@ -192,7 +192,7 @@ namespace Acme.AcquireGeneration
             }
             catch (Exception ex)
             {
-                orchestrationResults.Notes.Add($"Exception in {nameof(AcmeAcquireGenerationOrchestratorAsync)}: {ex}");
+                orchestrationResults.Notes.Add($"Exception in {nameof(SktInsightsAcquireGenerationOrchestratorAsync)}: {ex}");
                 Log.LogError(JsonConvert.SerializeObject(orchestrationResults), ex);
                 return orchestrationResults;
             }

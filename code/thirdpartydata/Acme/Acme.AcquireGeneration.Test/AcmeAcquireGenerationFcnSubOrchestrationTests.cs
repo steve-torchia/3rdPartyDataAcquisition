@@ -20,7 +20,7 @@ namespace Acme.AcquireGeneration.Test
         }
 
         [Fact]
-        public void AcmeAcquireGenerationOrchestratorAsync_Success()
+        public void SktInsightsAcquireGenerationOrchestratorAsync_Success()
         {
             // Mock IDurableClient
             var ctx = GetSubOrchestrationCtxMock(
@@ -37,7 +37,7 @@ namespace Acme.AcquireGeneration.Test
         }
 
         [Fact]
-        public void AcmeAcquireGenerationOrchestratorAsync_FailedLaunch()
+        public void SktInsightsAcquireGenerationOrchestratorAsync_FailedLaunch()
         {
             // Mock IDurableClient
             var ctx = GetSubOrchestrationCtxMock(
@@ -54,7 +54,7 @@ namespace Acme.AcquireGeneration.Test
         }
 
         [Fact]
-        public void AcmeAcquireGenerationOrchestratorAsync_FailedWaitForResults()
+        public void SktInsightsAcquireGenerationOrchestratorAsync_FailedWaitForResults()
         {
             // Mock IDurableClient
             var ctx = GetSubOrchestrationCtxMock(
@@ -71,7 +71,7 @@ namespace Acme.AcquireGeneration.Test
         }
 
         [Fact]
-        public void AcmeAcquireGenerationOrchestratorAsync_FailedDownloadAndSave()
+        public void SktInsightsAcquireGenerationOrchestratorAsync_FailedDownloadAndSave()
         {
             // Mock IDurableClient
             var ctx = GetSubOrchestrationCtxMock(

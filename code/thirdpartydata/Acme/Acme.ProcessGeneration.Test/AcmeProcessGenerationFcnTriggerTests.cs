@@ -23,7 +23,7 @@ namespace Acme.ProcessGeneration.Test
         const string OrchestratorFunctionName = "TestFunctionName";
         const string OrchestrationInstanceId = "660875_20200701000000_20200701015900_15";
 
-        private readonly Mock<IAcmeProcessGenerationOrchestrator> orchestrationMock = new Mock<IAcmeProcessGenerationOrchestrator>();
+        private readonly Mock<ISktInsightsProcessGenerationOrchestrator> orchestrationMock = new Mock<ISktInsightsProcessGenerationOrchestrator>();
         private readonly Mock<DurableTaskClient> durableClientMock = new Mock<DurableTaskClient>("NameGoesHere");
         private readonly Mock<ILogger<AcmeProcessGenerationFcnTrigger>> loggerMock = new Mock<ILogger<AcmeProcessGenerationFcnTrigger>>();
 

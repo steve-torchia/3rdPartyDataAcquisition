@@ -6,7 +6,7 @@ using Acme.Contracts;
 namespace Acme.AcquireGeneration
 
 {
-    public interface IAcmeHttpClient
+    public interface ISktInsightsHttpClient
     {
         Task<CallResult<string>> LaunchGenerationForWeatherYearJob(AcmeAcquireGenerationContext ctx);
         Task<CallResult<string>> WaitForGenerationJobAsync(string historyId, int retryCount, int retryIntervalSeconds);

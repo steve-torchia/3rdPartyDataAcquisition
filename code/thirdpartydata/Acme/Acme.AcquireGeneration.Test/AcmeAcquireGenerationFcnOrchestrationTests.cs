@@ -23,7 +23,7 @@ namespace Acme.AcquireGeneration.Test
         }
 
         [Fact]
-        public void AcmeAcquireGenerationOrchestratorAsync_Success()
+        public void SktInsightsAcquireGenerationOrchestratorAsync_Success()
         {
             var projectList = new List<AcquireGenerationInputModel>()
             {
@@ -43,7 +43,7 @@ namespace Acme.AcquireGeneration.Test
             var orchestrationCtx = GetOrchestrationCtxMock(projectList);
 
             // Run Orchestration
-            var ret = orchestrator.AcmeAcquireGenerationOrchestratorAsync(orchestrationCtx.Object).Result;
+            var ret = orchestrator.SktInsightsAcquireGenerationOrchestratorAsync(orchestrationCtx.Object).Result;
 
             Assert.True(ret.Details.Success.Count == 1);
             Assert.True(ret.Details.Failure.Count == 0);
@@ -52,7 +52,7 @@ namespace Acme.AcquireGeneration.Test
         }
 
         [Fact]
-        public void AcmeAcquireGenerationOrchestratorAsync_Failed()
+        public void SktInsightsAcquireGenerationOrchestratorAsync_Failed()
         {
             var projectList = new List<AcquireGenerationInputModel>()
             {
@@ -72,7 +72,7 @@ namespace Acme.AcquireGeneration.Test
             var orchestrationCtx = GetOrchestrationCtxMock(projectList);
 
             // Run Orchestration
-            var ret = orchestrator.AcmeAcquireGenerationOrchestratorAsync(orchestrationCtx.Object).Result;
+            var ret = orchestrator.SktInsightsAcquireGenerationOrchestratorAsync(orchestrationCtx.Object).Result;
 
             Assert.True(ret.Details.Success.Count == 0);
             Assert.True(ret.Details.Failure.Count == 1);
@@ -82,7 +82,7 @@ namespace Acme.AcquireGeneration.Test
         }
 
         [Fact]
-        public void AcmeAcquireGenerationOrchestratorAsync_OnePassed_OneFailed()
+        public void SktInsightsAcquireGenerationOrchestratorAsync_OnePassed_OneFailed()
         {
             var projectList = new List<AcquireGenerationInputModel>()
             {
@@ -104,7 +104,7 @@ namespace Acme.AcquireGeneration.Test
             var orchestrationCtx = GetOrchestrationCtxMock(projectList);
 
             // Run Orchestration
-            var ret = orchestrator.AcmeAcquireGenerationOrchestratorAsync(orchestrationCtx.Object).Result;
+            var ret = orchestrator.SktInsightsAcquireGenerationOrchestratorAsync(orchestrationCtx.Object).Result;
 
             Assert.True(ret.Details.Success.Count == 1);
             Assert.True(ret.Details.Failure.Count == 1);

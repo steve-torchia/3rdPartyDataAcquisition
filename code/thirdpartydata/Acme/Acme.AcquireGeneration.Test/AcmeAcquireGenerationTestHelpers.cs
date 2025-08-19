@@ -144,9 +144,9 @@ namespace Acme.AcquireGeneration.Test
             return blobContainerWrapperMock;
         }
 
-        public static Mock<IAcmeHttpClient> GetHttpClientMock(bool success, string successMsg = null, string failureMsg = null, string returnVal = null)
+        public static Mock<ISktInsightsHttpClient> GetHttpClientMock(bool success, string successMsg = null, string failureMsg = null, string returnVal = null)
         {
-            var httpClient = new Mock<IAcmeHttpClient>();
+            var httpClient = new Mock<ISktInsightsHttpClient>();
 
             var retVal = new CallResult<string>
             {

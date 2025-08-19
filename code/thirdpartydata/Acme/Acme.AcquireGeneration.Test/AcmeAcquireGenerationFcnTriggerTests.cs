@@ -21,7 +21,7 @@ namespace Acme.AcquireGeneration.Test
         const string OrchestratorFunctionName = "TestFunctionName";
         const string OrchestrationInstanceId = "660875_20200701000000_20200701015900_15";
 
-        private readonly Mock<IAcmeAcquireGenerationOrchestrator> orchestrationMock = new Mock<IAcmeAcquireGenerationOrchestrator>();
+        private readonly Mock<ISktInsightsAcquireGenerationOrchestrator> orchestrationMock = new Mock<ISktInsightsAcquireGenerationOrchestrator>();
         private readonly Mock<DurableTaskClient> durableClientMock = new Mock<DurableTaskClient>("NameGoesHere");   
         private readonly Mock<ILogger<AcmeAcquireGenerationFcnTrigger>> loggerMock = new Mock<ILogger<AcmeAcquireGenerationFcnTrigger>>();
 

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Acme.Contracts
 {
-    public interface IAcmeProcessGenerationOrchestrator
+    public interface ISktInsightsProcessGenerationOrchestrator
     {
-        Task<OrchestrationResults> AcmeProcessGenerationOrchestratorAsync([OrchestrationTrigger] TaskOrchestrationContext orchestrationCtx);
+        Task<OrchestrationResults> SktInsightsProcessGenerationOrchestratorAsync([OrchestrationTrigger] TaskOrchestrationContext orchestrationCtx);
 
         Task<IActionResult> Execute(string orchestrationId, string requestInputJson, DurableTaskClient orchestrationClient, HttpRequestData req);
     }

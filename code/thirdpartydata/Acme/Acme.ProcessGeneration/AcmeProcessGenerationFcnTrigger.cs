@@ -17,12 +17,12 @@ namespace Acme.ProcessGeneration
 {
     public class AcmeProcessGenerationFcnTrigger : OrchestrationClientTestingSupport
     {
-        internal IAcmeProcessGenerationOrchestrator Orchestrator { get; }
+        internal ISktInsightsProcessGenerationOrchestrator Orchestrator { get; }
 
         internal ILogger<AcmeProcessGenerationFcnTrigger> Log { get; private set; }
 
         public AcmeProcessGenerationFcnTrigger(
-            IAcmeProcessGenerationOrchestrator orchestrator, 
+            ISktInsightsProcessGenerationOrchestrator orchestrator, 
             ILogger<AcmeProcessGenerationFcnTrigger> log)
         {
             this.Orchestrator = orchestrator;

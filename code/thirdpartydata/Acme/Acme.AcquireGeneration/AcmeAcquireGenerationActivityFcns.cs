@@ -13,9 +13,9 @@ namespace Acme.AcquireGeneration
     /// </summary>
     public class AcmeAcquireGenerationActivityFcns : ActivityFunctionBase<AcmeAcquireGenerationActivityFcns>
     {
-        private IAcmeHttpClient AcmeHttpClient { get; }
+        private ISktInsightsHttpClient AcmeHttpClient { get; }
 
-        public AcmeAcquireGenerationActivityFcns(IAcmeHttpClient acmeHttpClient, IBlobContainerWrapper blobContainerWrapper = null, ILogger<AcmeAcquireGenerationActivityFcns> log = null)
+        public AcmeAcquireGenerationActivityFcns(ISktInsightsHttpClient acmeHttpClient, IBlobContainerWrapper blobContainerWrapper = null, ILogger<AcmeAcquireGenerationActivityFcns> log = null)
             : base(blobContainerWrapper, log)
         {
             this.AcmeHttpClient = acmeHttpClient ?? throw new ArgumentNullException(nameof(acmeHttpClient));

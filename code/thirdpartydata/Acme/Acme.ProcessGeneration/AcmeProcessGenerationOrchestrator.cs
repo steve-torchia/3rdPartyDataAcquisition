@@ -22,7 +22,7 @@ namespace Acme.ProcessGeneration
     /// Encapsulates the Durable Function Orchestration method, which defines the overall workflow for  
     /// retrieving the Acme Generation
     /// </summary>
-    public class AcmeProcessGenerationOrchestrator : OrchestrationClientTestingSupport, IAcmeProcessGenerationOrchestrator
+    public class AcmeProcessGenerationOrchestrator : OrchestrationClientTestingSupport, ISktInsightsProcessGenerationOrchestrator
     {
         internal ILogger<AcmeProcessGenerationOrchestrator> Log { get; private set; }
 
@@ -51,7 +51,7 @@ namespace Acme.ProcessGeneration
         {
             // Launch the Durable Orchestrator
             await orchestrationClient.ScheduleNewOrchestrationInstanceAsync(
-                nameof(AcmeProcessGenerationOrchestratorAsync),               
+                nameof(SktInsightsProcessGenerationOrchestratorAsync),               
                 requestInputJson,
                 new StartOrchestrationOptions(orchestrationId));
 
@@ -73,8 +73,8 @@ namespace Acme.ProcessGeneration
             return new OkObjectResult(mgmtUrls);
         }
 
-        [Function(nameof(AcmeProcessGenerationOrchestratorAsync))]
-        public async Task<OrchestrationResults> AcmeProcessGenerationOrchestratorAsync(
+        [Function(nameof(SktInsightsProcessGenerationOrchestratorAsync))]
+        public async Task<OrchestrationResults> SktInsightsProcessGenerationOrchestratorAsync(
             [OrchestrationTrigger] TaskOrchestrationContext orchestrationCtx)
         {
             var orchestrationResults = new OrchestrationResults();
@@ -178,7 +178,7 @@ namespace Acme.ProcessGeneration
             }
             catch (Exception ex)
             {
-                orchestrationResults.Notes.Add($"Exception in {nameof(AcmeProcessGenerationOrchestratorAsync)}: {ex}");
+                orchestrationResults.Notes.Add($"Exception in {nameof(SktInsightsProcessGenerationOrchestratorAsync)}: {ex}");
                 return orchestrationResults;
             }
         }

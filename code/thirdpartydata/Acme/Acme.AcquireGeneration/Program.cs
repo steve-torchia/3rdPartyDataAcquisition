@@ -99,13 +99,13 @@ var host = new HostBuilder()
         
         if (useHttpMock)
         {
-            services.AddHttpClient<IAcmeHttpClient, AcmeHttpClientInternetMock>();
+            services.AddHttpClient<ISktInsightsHttpClient, AcmeHttpClientInternetMock>();
         }
         else
         {
             // Acme uses NTLM security.  
             // NOTE:  NTLM is considered legacy and less secure than say, OAuth2 or certificates.
-            services.AddHttpClient<IAcmeHttpClient, AcmeHttpClient>()
+            services.AddHttpClient<ISktInsightsHttpClient, AcmeHttpClient>()
                 .ConfigurePrimaryHttpMessageHandler((sp) =>
                 {
                     var options = sp.GetRequiredService<IOptions<AcmeSubscriptionInfo>>().Value;
@@ -117,7 +117,7 @@ var host = new HostBuilder()
         }
 
         // The workflow (aka Durable Orchestration class)
-        services.AddScoped<IAcmeAcquireGenerationOrchestrator, AcmeAcquireGenerationOrchestrator>();
+        services.AddScoped<ISktInsightsAcquireGenerationOrchestrator, AcmeAcquireGenerationOrchestrator>();
 
         // The activity functions 
         services.AddScoped<AcmeAcquireGenerationActivityFcns>();

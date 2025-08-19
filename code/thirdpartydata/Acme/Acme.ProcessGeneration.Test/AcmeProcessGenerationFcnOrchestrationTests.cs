@@ -21,7 +21,7 @@ namespace Acme.ProcessGeneration.Test
         }
 
         [Fact]
-        public void AcmeProcessGenerationOrchestratorAsync_Success()
+        public void SktInsightsProcessGenerationOrchestratorAsync_Success()
         {
             // Mock IDurableClient
             var ctx = GetOrchestrationCtxMock(
@@ -31,7 +31,7 @@ namespace Acme.ProcessGeneration.Test
 
             var orchestrator = GetOrchestrator();
 
-            var ret = orchestrator.AcmeProcessGenerationOrchestratorAsync(ctx.Object).Result;
+            var ret = orchestrator.SktInsightsProcessGenerationOrchestratorAsync(ctx.Object).Result;
 
             Assert.True(ret.Success.Count == 2);
             Assert.True(ret.Success[0] == "PR-00001853");
@@ -39,7 +39,7 @@ namespace Acme.ProcessGeneration.Test
         }
 
         [Fact]
-        public void AcmeProcessGenerationOrchestratorAsync_FailedLaunch()
+        public void SktInsightsProcessGenerationOrchestratorAsync_FailedLaunch()
         {
             // Mock IDurableClient
             var ctx = GetOrchestrationCtxMock(
@@ -49,7 +49,7 @@ namespace Acme.ProcessGeneration.Test
 
             var orchestrator = GetOrchestrator();
 
-            var ret = orchestrator.AcmeProcessGenerationOrchestratorAsync(ctx.Object).Result;
+            var ret = orchestrator.SktInsightsProcessGenerationOrchestratorAsync(ctx.Object).Result;
 
             Assert.True(ret.Success.Count == 0);
             Assert.True(ret.Failure.Count == 0);
@@ -57,7 +57,7 @@ namespace Acme.ProcessGeneration.Test
         }
 
         [Fact]
-        public void AcmeProcessGenerationOrchestratorAsync_FailedProcess()
+        public void SktInsightsProcessGenerationOrchestratorAsync_FailedProcess()
         {
             // Mock IDurableClient
             var ctx = GetOrchestrationCtxMock(
@@ -67,7 +67,7 @@ namespace Acme.ProcessGeneration.Test
 
             var orchestrator = GetOrchestrator();
 
-            var ret = orchestrator.AcmeProcessGenerationOrchestratorAsync(ctx.Object).Result;
+            var ret = orchestrator.SktInsightsProcessGenerationOrchestratorAsync(ctx.Object).Result;
 
             Assert.True(ret.Success.Count == 0);
             Assert.True(ret.Failure.Count == 2);
@@ -76,7 +76,7 @@ namespace Acme.ProcessGeneration.Test
         }
 
         [Fact]
-        public void AcmeProcessGenerationOrchestratorAsync_FailedFileMove()
+        public void SktInsightsProcessGenerationOrchestratorAsync_FailedFileMove()
         {
             // Mock IDurableClient
             var ctx = GetOrchestrationCtxMock(
@@ -86,7 +86,7 @@ namespace Acme.ProcessGeneration.Test
 
             var orchestrator = GetOrchestrator();
 
-            var ret = orchestrator.AcmeProcessGenerationOrchestratorAsync(ctx.Object).Result;
+            var ret = orchestrator.SktInsightsProcessGenerationOrchestratorAsync(ctx.Object).Result;
 
             Assert.True(ret.Success.Count == 0);
             Assert.True(ret.Failure.Count == 2);
