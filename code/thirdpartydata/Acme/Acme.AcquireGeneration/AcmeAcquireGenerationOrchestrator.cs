@@ -68,8 +68,11 @@ namespace Acme.AcquireGeneration
                 requestInputJson,
                 new StartOrchestrationOptions(orchestrationId));
 
+            var x = await orchestrationClient.GetInstanceAsync(orchestrationId);
             // Get the status for the passed in instanceId
-            var orchestrationStatus = await OrchestrationClientGetStatusAsyncMethod.Invoke(orchestrationClient, orchestrationId);
+            // ***SKT: Need to fix: can get rid of this since *GetInstanceAsync* is not an extension method like its predesessor GetStatusAsync was
+            //var orchestrationStatus = await OrchestrationClientGetStatusAsyncMethod.Invoke(orchestrationClient, orchestrationId);
+            var orchestrationStatus = await orchestrationClient.GetInstanceAsync(orchestrationId);
             var shortStatus = new
             {
                 currentStatus = orchestrationStatus.RuntimeStatus.ToString(),

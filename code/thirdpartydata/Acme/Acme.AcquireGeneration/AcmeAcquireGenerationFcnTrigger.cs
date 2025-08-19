@@ -13,7 +13,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 
 namespace Acme.AcquireGeneration
 {
-    public class AcmeAcquireGenerationFcnTrigger : OrchestrationClientTestingSupport
+    public class AcmeAcquireGenerationFcnTrigger : GET RID OF THIS OrchestrationClientTestingSupport
     {
         public const string AcmeHistoryId = "acmeHistoryId";
         public const string GetSettingsParam = "getSettings";

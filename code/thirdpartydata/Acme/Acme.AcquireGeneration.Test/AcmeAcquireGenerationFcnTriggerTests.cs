@@ -119,6 +119,7 @@ namespace Acme.AcquireGeneration.Test
             {
                 // Mock the CreateCheckStatusResponse method.  
                 // ** Note: Moq doesn't support extension methods so as a workaround we have to write a little code to support injecting this method
+                // ***SKT: Need to fix: can get rid of this since *GetInstanceAsync* is not an extension method like its predesessor GetStatusAsync was
                 OrchestrationClientGetStatusAsyncMethod = (obj, val) =>
                 {
                     return Task.FromResult(new OrchestrationMetadata("foo", val)
